@@ -18,7 +18,19 @@ Generate product specifications from PDF and DOCX documents using the GitHub Cop
 
 ## Installation
 
-### From Source
+### Option 1: Using npx (Recommended - No Install Required)
+
+```bash
+npx @charleskuncheria/copilot-spec-generator input.pdf output.md
+```
+
+### Option 2: Global Install
+
+```bash
+npm install -g @charleskuncheria/copilot-spec-generator
+```
+
+### Option 3: From Source
 
 ```bash
 git clone https://github.com/CharlesKuncheria/copilot-spec-generator.git
@@ -28,11 +40,15 @@ npm run build
 npm link
 ```
 
-This will install the `spec-gen` command globally on your system.
-
 ## Usage
 
-### Basic Usage
+### Using npx (No Installation Required)
+
+```bash
+npx @charleskuncheria/copilot-spec-generator input.pdf output.md
+```
+
+### Using Installed Command
 
 ```bash
 spec-gen input.pdf output.md
@@ -41,10 +57,14 @@ spec-gen input.pdf output.md
 ### Examples
 
 ```bash
-# Generate spec from PDF
-spec-gen requirements.pdf product-spec.md
+# Generate spec from PDF using npx
+npx @charleskuncheria/copilot-spec-generator requirements.pdf product-spec.md
 
-# Generate spec from DOCX
+# Generate spec from DOCX using npx
+npx @charleskuncheria/copilot-spec-generator design-document.docx feature-spec.md
+
+# If globally installed
+spec-gen requirements.pdf product-spec.md
 spec-gen design-document.docx feature-spec.md
 ```
 
