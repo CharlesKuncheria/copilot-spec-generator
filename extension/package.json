@@ -1,0 +1,50 @@
+{
+  "name": "copilot-spec-generator-chat",
+  "publisher": "charleskuncheria",
+  "displayName": "Copilot Spec Generator",
+  "description": "Convert documents to product feature specs using GitHub Copilot Chat",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "activationEvents": [],
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "copilot-spec-generator.spec-gen",
+        "fullName": "Spec Generator",
+        "name": "spec-generator",
+        "description": "Convert documents (PDF, DOCX, or text) into structured product feature specifications",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "convert",
+            "description": "Convert a document or text into a product spec"
+          }
+        ]
+      }
+    ]
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.100.0",
+    "@types/pdf-parse": "^1.1.4",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
