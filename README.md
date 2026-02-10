@@ -1,6 +1,10 @@
 # Copilot Spec Generator
 
-Generate product specifications from PDF and DOCX documents using the GitHub Copilot SDK.
+Generate product specifications from PDF and DOCX documents using GitHub Copilot.
+
+**Two ways to use:**
+- 🖥️ **[CLI Tool](#cli-tool)** - Command-line automation for batch processing
+- 💬 **[VS Code Extension](#vs-code-extension)** - Interactive chat interface (recommended for PMs)
 
 ## Features
 
@@ -8,7 +12,42 @@ Generate product specifications from PDF and DOCX documents using the GitHub Cop
 - 🤖 **GitHub Copilot Powered** - Uses GitHub Copilot SDK for intelligent spec generation
 - 📝 **Structured Output** - Generates well-formatted markdown product specs
 - 🔒 **Secure** - No API keys needed, uses your GitHub Copilot subscription
-- ⚡ **Streaming** - Real-time progress as the spec is generated
+- ⚡ **Interactive or Automated** - Choose chat interface or CLI based on your workflow
+
+## VS Code Extension
+
+**Best for:** Product Managers who want an interactive, no-code experience
+
+### Installation
+
+1. Download the extension from the [releases page](https://github.com/CharlesKuncheria/copilot-spec-generator/releases)
+2. In VS Code: Extensions → `...` menu → "Install from VSIX..."
+3. Or build from source: See [extension/README.md](extension/README.md)
+
+### Usage
+
+1. Open GitHub Copilot Chat in VS Code (Ctrl+Shift+I / Cmd+Shift+I)
+2. Type `@spec-generator` and describe your feature or attach a document
+3. Iterate with follow-up questions to refine the spec
+
+**Example:**
+```
+@spec-generator Create a spec for a user authentication feature with email and social login
+```
+
+Or attach a PDF/DOCX:
+```
+@spec-generator convert this requirements document
+[attach requirements.pdf]
+```
+
+See [extension/README.md](extension/README.md) for full documentation.
+
+---
+
+## CLI Tool
+
+**Best for:** Developers who want automation, CI/CD integration, or batch processing
 
 ## Prerequisites
 
