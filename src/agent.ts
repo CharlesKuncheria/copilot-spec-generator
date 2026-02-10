@@ -41,33 +41,40 @@ export async function generateSpec(
   const session = await client.createSession({
     model,
     streaming: true,
-    systemPrompt: SPEC_GENERATION_PROMPT,
   });
 
   console.log('✨ Generating product spec...\n');
   console.log('─'.repeat(60));
 
   let spec = '';
-  let lastUpdate = Date.now();
 
-  await session.send({
-    prompt: `Convert the following document into a structured product specification:\n\n${documentText}`,
-    onChunk: (chunk: string) => {
-      process.stdout.write(chunk);
-      spec += chunk;
-
-      const now = Date.now();
-      if (verbose && now - lastUpdate > 1000) {
-        process.stderr.write('.');
-        lastUpdate = now;
-      }
-    },
+  // Set up streaming event listeners
+  session.on('assistant.message_delta', (event: any) => {
+    const chunk = event.data.deltaContent;
+    process.stdout.write(chunk);
+    spec += chunk;
   });
+
+  // Wait for completion
+  const completed = new Promise<void>((resolve) => {
+    session.on('session.idle', () => {
+      resolve();
+    });
+  });
+
+  // Send message with system prompt
+  const fullPrompt = `${SPEC_GENERATION_PROMPT}\n\n---\n\nConvert the following document into a structured product specification:\n\n${documentText}`;
+  await session.send({ prompt: fullPrompt });
+
+  // Wait for streaming to complete
+  await completed;
 
   console.log('\n' + '─'.repeat(60));
 
   if (verbose) console.log('\n💾 Saving spec to file...');
   await writeFile(outputFile, spec, 'utf-8');
 
+  // Cleanup
+  await session.destroy();
   await client.stop();
 }
