@@ -37,3 +37,6 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Accidental nested repo copy
+copilot-spec-generator/

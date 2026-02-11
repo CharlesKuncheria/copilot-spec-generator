@@ -61,8 +61,10 @@ Press F5 to run in development mode.
 
 ### Using Slash Commands
 
+Pick a local file using the built-in file picker:
+
 ```
-@spec-generator /convert [attach file]
+@spec-generator /file
 ```
 
 ## Generated Spec Includes

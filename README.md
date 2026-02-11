@@ -41,6 +41,11 @@ Or attach a PDF/DOCX:
 [attach requirements.pdf]
 ```
 
+Or pick a local file using the slash command:
+```
+@spec-generator /file
+```
+
 See [extension/README.md](extension/README.md) for full documentation.
 
 ---

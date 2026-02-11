@@ -15,7 +15,9 @@
     "AI",
     "Chat"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "chatParticipants": [
       {
@@ -28,6 +30,10 @@
           {
             "name": "convert",
             "description": "Convert a document or text into a product spec"
+          },
+          {
+            "name": "file",
+            "description": "Pick a local PDF/DOCX/TXT/MD file and convert it into a product spec"
           }
         ]
       }
